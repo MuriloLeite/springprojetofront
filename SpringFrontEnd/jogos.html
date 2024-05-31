@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Jogos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="jogos.html">Jogos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="games">
+            <h1>Jogos</h1>
+            <ul id="game-list">
+                <!-- Lista de jogos será inserida aqui -->
+            </ul>
+            <div id="game-form">
+                <h2>Cadastrar Jogo</h2>
+                <form id="add-game-form">
+                    <input type="text" id="game-nome" placeholder="Nome" required>
+                    <input type="number" id="game-preco" placeholder="Preço" required>
+                    <input type="text" id="game-imagens" placeholder="Imagens" required>
+                    <textarea id="game-descricao" placeholder="Descrição" required></textarea>
+                    <input type="number" id="game-nota" placeholder="Nota" required>
+                    <input type="text" id="game-classificacao" placeholder="Classificação" required>
+                    <input type="text" id="game-genero" placeholder="Gênero" required>
+                    <input type="date" id="game-data-lancamento" placeholder="Data de Lançamento" required>
+                    <select id="game-desenvolvedor" required>
+                        <!-- Desenvolvedores serão carregados aqui -->
+                    </select>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

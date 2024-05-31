@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Desenvolvedores</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="jogos.html">Jogos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="developers">
+            <h1>Desenvolvedores</h1>
+            <ul id="developer-list">
+                <!-- Lista de desenvolvedores será inserida aqui -->
+            </ul>
+            <div id="developer-form">
+                <h2>Cadastrar Desenvolvedor</h2>
+                <form id="add-developer-form">
+                    <input type="text" id="dev-nome" placeholder="Nome" required>
+                    <input type="text" id="dev-cnpj" placeholder="CNPJ" required>
+                    <input type="number" id="dev-nota" placeholder="Nota" required>
+                    <input type="date" id="dev-data-criacao" placeholder="Data de Criação" required>
+                    <input type="text" id="dev-presidente" placeholder="Presidente" required>
+                    <input type="number" id="dev-numero-colaboradores" placeholder="Número de Colaboradores" required>
+                    <input type="url" id="dev-website" placeholder="Website" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
+    </footer>   
+
+</body>
+</html>
