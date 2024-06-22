@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Jogos</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="scripts-jogos.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,23 +24,32 @@
     <main>
         <section id="games">
             <h1>Jogos</h1>
-            <ul id="game-list">
-                <!-- Lista de jogos será inserida aqui -->
-            </ul>
+            <table id="game-table" class="display">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Nota</th>
+                        <th>Data de Lançamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Lista de jogos será inserida aqui -->
+                </tbody>
+            </table>
             <div id="game-form">
                 <h2>Cadastrar Jogo</h2>
                 <form id="add-game-form">
                     <input type="text" id="game-nome" placeholder="Nome" required>
                     <input type="number" id="game-preco" placeholder="Preço" required>
-                    <input type="text" id="game-imagens" placeholder="Imagens" required>
-                    <textarea id="game-descricao" placeholder="Descrição" required></textarea>
                     <input type="number" id="game-nota" placeholder="Nota" required>
+                    <input type="date" id="game-data-lancamento" placeholder="Data de Lançamento" required>
+                    <input type="text" id="game-imagens" placeholder="Imagens" required>
+                    <input type="text" id="game-descricao" placeholder="Descrição" required>
                     <input type="text" id="game-classificacao" placeholder="Classificação" required>
                     <input type="text" id="game-genero" placeholder="Gênero" required>
-                    <input type="date" id="game-data-lancamento" placeholder="Data de Lançamento" required>
-                    <select id="game-desenvolvedor" required>
-                        <!-- Desenvolvedores serão carregados aqui -->
-                    </select>
+                    <select id="game-desenvolvedor" required></select>
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
@@ -47,5 +58,26 @@
     <footer>
         <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Modal para edição de jogos -->
+    <div id="edit-game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Jogo</h2>
+            <form id="edit-game-form">
+                <input type="hidden" id="edit-game-id">
+                <input type="text" id="edit-game-nome" placeholder="Nome" required>
+                <input type="number" id="edit-game-preco" placeholder="Preço" required>
+                <input type="number" id="edit-game-nota" placeholder="Nota" required>
+                <input type="date" id="edit-game-data-lancamento" placeholder="Data de Lançamento" required>
+                <input type="text" id="edit-game-imagens" placeholder="Imagens" required>
+                <input type="text" id="edit-game-descricao" placeholder="Descrição" required>
+                <input type="text" id="edit-game-classificacao" placeholder="Classificação" required>
+                <input type="text" id="edit-game-genero" placeholder="Gênero" required>
+                <select id="edit-game-desenvolvedor" required></select>
+                <button type="submit">Atualizar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

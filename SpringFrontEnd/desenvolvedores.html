@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Desenvolvedores</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="scripts-desenvolvedor.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,9 +24,17 @@
     <main>
         <section id="developers">
             <h1>Desenvolvedores</h1>
-            <ul id="developer-list">
-                <!-- Lista de desenvolvedores será inserida aqui -->
-            </ul>
+            <table id="developer-table" class="display">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Lista de desenvolvedores será inserida aqui -->
+                </tbody>
+            </table>
             <div id="developer-form">
                 <h2>Cadastrar Desenvolvedor</h2>
                 <form id="add-developer-form">
@@ -42,7 +52,24 @@
     </main>
     <footer>
         <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
-    </footer>   
+    </footer>
 
+    <!-- Modal para edição de desenvolvedores -->
+    <div id="edit-developer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Desenvolvedor</h2>
+            <form id="edit-developer-form">
+                <input type="text" id="edit-dev-nome" placeholder="Nome" required>
+                <input type="text" id="edit-dev-cnpj" placeholder="CNPJ" required>
+                <input type="number" id="edit-dev-nota" placeholder="Nota" required>
+                <input type="date" id="edit-dev-data-criacao" placeholder="Data de Criação" required>
+                <input type="text" id="edit-dev-presidente" placeholder="Presidente" required>
+                <input type="number" id="edit-dev-numero-colaboradores" placeholder="Número de Colaboradores" required>
+                <input type="url" id="edit-dev-website" placeholder="Website" required>
+                <button type="submit">Atualizar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
