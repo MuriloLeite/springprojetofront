@@ -4,26 +4,28 @@ $(document).ready(function() {
     function initializeDataTable() {
         $('#developer-table').DataTable({
             destroy: true,
-            data: [],
+            ajax: {
+                url: devBaseUrl,
+                dataSrc: ''
+            },
             columns: [
                 { data: 'nome', title: 'Nome' },
-                { data: 'website', title: 'Website' },
                 { data: 'nota', title: 'Nota' },
                 { 
                     data: 'dataCriacao',
                     title: 'Data de Criação',
                     render: function(data) {
-                        // Formata a data no formato desejado (por exemplo, DD/MM/AAAA)
                         const date = new Date(data);
                         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
                     }
                 },
-                {
+                { 
                     data: null,
                     render: function(data, type, row) {
                         return `
                             <button class="edit-developer" data-id="${row.id}">Editar</button>
                             <button class="delete-developer" data-id="${row.id}">Excluir</button>
+                            <button class="view-developer" data-id="${row.id}">Detalhes</button>
                         `;
                     }
                 }
@@ -32,12 +34,8 @@ $(document).ready(function() {
     }
 
     function loadDevelopers() {
-        $.get(devBaseUrl, function(developers) {
-            const table = $('#developer-table').DataTable();
-            table.clear();
-            table.rows.add(developers);
-            table.draw();
-        });
+        const table = $('#developer-table').DataTable();
+        table.ajax.reload();
     }
 
     $('#add-developer-form').on('submit', function(e) {
@@ -46,10 +44,10 @@ $(document).ready(function() {
         const newDeveloper = {
             nome: $('#dev-nome').val(),
             cnpj: $('#dev-cnpj').val(),
-            nota: parseInt($('#dev-nota').val()), // Certifique-se de converter para inteiro se necessário
+            nota: parseInt($('#dev-nota').val()),
             dataCriacao: $('#dev-data-criacao').val(),
             presidente: $('#dev-presidente').val(),
-            numeroColaboradores: parseInt($('#dev-numero-colaboradores').val()), // Converta para inteiro se necessário
+            numeroColaboradores: parseInt($('#dev-numero-colaboradores').val()),
             website: $('#dev-website').val()
         };
 
@@ -61,6 +59,7 @@ $(document).ready(function() {
             success: function() {
                 loadDevelopers();
                 $('#add-developer-form')[0].reset();
+                $('#add-developer-modal').hide();
             },
             error: function(error) {
                 alert('Erro ao cadastrar desenvolvedor.');
@@ -95,10 +94,10 @@ $(document).ready(function() {
             id: developerId,
             nome: $('#edit-dev-nome').val(),
             cnpj: $('#edit-dev-cnpj').val(),
-            nota: parseInt($('#edit-dev-nota').val()), // Certifique-se de converter para inteiro se necessário
+            nota: parseInt($('#edit-dev-nota').val()),
             dataCriacao: $('#edit-dev-data-criacao').val(),
             presidente: $('#edit-dev-presidente').val(),
-            numeroColaboradores: parseInt($('#edit-dev-numero-colaboradores').val()), // Converta para inteiro se necessário
+            numeroColaboradores: parseInt($('#edit-dev-numero-colaboradores').val()),
             website: $('#edit-dev-website').val()
         };
 
@@ -136,8 +135,17 @@ $(document).ready(function() {
         }
     });
 
+    $(document).on('click', '.view-developer', function() {
+        const developerId = $(this).data('id');
+        window.location.href = `developer.html?id=${developerId}`;
+    });
+
     $('.modal .close').on('click', function() {
         $(this).closest('.modal').hide();
+    });
+
+    $('#add-developer-button').click(function() {
+        $('#add-developer-modal').show();
     });
 
     initializeDataTable();

@@ -24,6 +24,7 @@
     <main>
         <section id="games">
             <h1>Jogos</h1>
+            <button id="add-game-button">Cadastrar Novo Jogo</button>
             <table id="game-table" class="display">
                 <thead>
                     <tr>
@@ -31,6 +32,7 @@
                         <th>Preço</th>
                         <th>Nota</th>
                         <th>Data de Lançamento</th>
+                        <th>Desenvolvedor</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -38,26 +40,31 @@
                     <!-- Lista de jogos será inserida aqui -->
                 </tbody>
             </table>
-            <div id="game-form">
-                <h2>Cadastrar Jogo</h2>
-                <form id="add-game-form">
-                    <input type="text" id="game-nome" placeholder="Nome" required>
-                    <input type="number" id="game-preco" placeholder="Preço" required>
-                    <input type="number" id="game-nota" placeholder="Nota" required>
-                    <input type="date" id="game-data-lancamento" placeholder="Data de Lançamento" required>
-                    <input type="text" id="game-imagens" placeholder="Imagens" required>
-                    <input type="text" id="game-descricao" placeholder="Descrição" required>
-                    <input type="text" id="game-classificacao" placeholder="Classificação" required>
-                    <input type="text" id="game-genero" placeholder="Gênero" required>
-                    <select id="game-desenvolvedor" required></select>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Modal para cadastro de jogos -->
+    <div id="add-game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cadastrar Jogo</h2>
+            <form id="add-game-form">
+                <input type="text" id="game-nome" placeholder="Nome" required>
+                <input type="number" id="game-preco" placeholder="Preço" required>
+                <input type="number" id="game-nota" placeholder="Nota" required>
+                <input type="date" id="game-data-lancamento" placeholder="Data de Lançamento" required>
+                <input type="text" id="game-imagens" placeholder="Imagens" required>
+                <input type="text" id="game-descricao" placeholder="Descrição" required>
+                <input type="text" id="game-classificacao" placeholder="Classificação" required>
+                <input type="text" id="game-genero" placeholder="Gênero" required>
+                <select id="game-desenvolvedor" required></select>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Modal para edição de jogos -->
     <div id="edit-game-modal" class="modal">

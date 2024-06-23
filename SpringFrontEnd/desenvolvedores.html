@@ -24,10 +24,13 @@
     <main>
         <section id="developers">
             <h1>Desenvolvedores</h1>
+            <button id="add-developer-button">Cadastrar Novo Desenvolvedor</button>
             <table id="developer-table" class="display">
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Nota</th>
+                        <th>Data de Criação</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -35,24 +38,29 @@
                     <!-- Lista de desenvolvedores será inserida aqui -->
                 </tbody>
             </table>
-            <div id="developer-form">
-                <h2>Cadastrar Desenvolvedor</h2>
-                <form id="add-developer-form">
-                    <input type="text" id="dev-nome" placeholder="Nome" required>
-                    <input type="text" id="dev-cnpj" placeholder="CNPJ" required>
-                    <input type="number" id="dev-nota" placeholder="Nota" required>
-                    <input type="date" id="dev-data-criacao" placeholder="Data de Criação" required>
-                    <input type="text" id="dev-presidente" placeholder="Presidente" required>
-                    <input type="number" id="dev-numero-colaboradores" placeholder="Número de Colaboradores" required>
-                    <input type="url" id="dev-website" placeholder="Website" required>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Meu Site Estilizado. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Modal para cadastro de desenvolvedores -->
+    <div id="add-developer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cadastrar Desenvolvedor</h2>
+            <form id="add-developer-form">
+                <input type="text" id="dev-nome" placeholder="Nome" required>
+                <input type="text" id="dev-cnpj" placeholder="CNPJ" required>
+                <input type="number" id="dev-nota" placeholder="Nota" required>
+                <input type="date" id="dev-data-criacao" placeholder="Data de Criação" required>
+                <input type="text" id="dev-presidente" placeholder="Presidente" required>
+                <input type="number" id="dev-numero-colaboradores" placeholder="Número de Colaboradores" required>
+                <input type="url" id="dev-website" placeholder="Website" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Modal para edição de desenvolvedores -->
     <div id="edit-developer-modal" class="modal">

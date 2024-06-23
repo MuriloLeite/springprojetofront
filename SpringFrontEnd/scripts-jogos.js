@@ -2,6 +2,7 @@ $(document).ready(function() {
     const gameBaseUrl = 'http://localhost:8080/api/jogos';
     const devBaseUrl = 'http://localhost:8080/api/desenvolvedores';
     const editModal = document.getElementById('edit-game-modal');
+    const addModal = document.getElementById('add-game-modal');
 
     // Inicializa a tabela de jogos
     $('#game-table').DataTable({
@@ -20,6 +21,11 @@ $(document).ready(function() {
                     const date = new Date(data);
                     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
                 }
+            },
+            { 
+                data: 'desenvolvedor.nome',
+                title: 'Desenvolvedor',
+                defaultContent: ''
             },
             {
                 data: null,
@@ -62,12 +68,16 @@ $(document).ready(function() {
     // Fecha o modal quando o usuário clica no botão de fechar (X)
     $('.close').click(function() {
         editModal.style.display = 'none';
+        addModal.style.display = 'none';
     });
 
     // Fecha o modal se o usuário clicar fora da área do modal
     window.onclick = function(event) {
         if (event.target === editModal) {
             editModal.style.display = 'none';
+        }
+        if (event.target === addModal) {
+            addModal.style.display = 'none';
         }
     };
 
@@ -141,6 +151,7 @@ $(document).ready(function() {
                 console.log('Jogo cadastrado com sucesso:', response);
                 $('#game-table').DataTable().ajax.reload(); // Recarrega a tabela após o cadastro
                 $('#add-game-form')[0].reset(); // Limpa o formulário após o cadastro
+                addModal.style.display = 'none'; // Fecha o modal após o cadastro
             },
             error: function(error) {
                 console.error('Erro ao cadastrar jogo:', error);
@@ -164,4 +175,9 @@ $(document).ready(function() {
             });
         }
     };
+
+    // Abre o modal de cadastro de jogo
+    $('#add-game-button').click(function() {
+        addModal.style.display = 'block';
+    });
 });
