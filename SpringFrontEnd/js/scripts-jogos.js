@@ -4,7 +4,7 @@ $(document).ready(function() {
     const editModal = document.getElementById('edit-game-modal');
     const addModal = document.getElementById('add-game-modal');
 
-    // Inicializa a tabela de jogos
+
     $('#game-table').DataTable({
         ajax: {
             url: gameBaseUrl,
@@ -37,7 +37,7 @@ $(document).ready(function() {
         ]
     });
 
-    // Função para abrir o modal de edição preenchido com os dados do jogo
+
     window.openEditModal = function(id) {
         $.get(`${gameBaseUrl}/${id}`, function(game) {
             $('#edit-game-id').val(game.id);
@@ -50,7 +50,7 @@ $(document).ready(function() {
             $('#edit-game-genero').val(game.genero);
             $('#edit-game-data-lancamento').val(game.dataLancamento);
 
-            // Carrega os desenvolvedores no dropdown do modal
+
             $.get(devBaseUrl, function(developers) {
                 const select = $('#edit-game-desenvolvedor');
                 select.empty();
@@ -60,18 +60,15 @@ $(document).ready(function() {
                 });
             });
 
-            // Abre o modal de edição
+
             editModal.style.display = 'block';
         });
     };
 
-    // Fecha o modal quando o usuário clica no botão de fechar (X)
     $('.close').click(function() {
         editModal.style.display = 'none';
         addModal.style.display = 'none';
     });
-
-    // Fecha o modal se o usuário clicar fora da área do modal
     window.onclick = function(event) {
         if (event.target === editModal) {
             editModal.style.display = 'none';
@@ -81,7 +78,6 @@ $(document).ready(function() {
         }
     };
 
-    // Evento de submit do formulário de edição de jogo
     $('#edit-game-form').submit(function(event) {
         event.preventDefault();
         const game = {
@@ -107,7 +103,7 @@ $(document).ready(function() {
             success: function(response) {
                 console.log('Jogo atualizado com sucesso:', response);
                 editModal.style.display = 'none';
-                $('#game-table').DataTable().ajax.reload(); // Recarrega a tabela após a atualização
+                $('#game-table').DataTable().ajax.reload();
             },
             error: function(error) {
                 console.error('Erro ao atualizar jogo:', error);
@@ -115,7 +111,7 @@ $(document).ready(function() {
         });
     });
 
-    // Carrega os desenvolvedores no dropdown do formulário de adição de jogo
+
     $.get(devBaseUrl, function(developers) {
         const select = $('#game-desenvolvedor');
         select.empty();
@@ -125,7 +121,7 @@ $(document).ready(function() {
         });
     });
 
-    // Evento de submit do formulário de adição de jogo
+
     $('#add-game-form').submit(function(event) {
         event.preventDefault();
         const game = {
@@ -149,9 +145,9 @@ $(document).ready(function() {
             data: JSON.stringify(game),
             success: function(response) {
                 console.log('Jogo cadastrado com sucesso:', response);
-                $('#game-table').DataTable().ajax.reload(); // Recarrega a tabela após o cadastro
-                $('#add-game-form')[0].reset(); // Limpa o formulário após o cadastro
-                addModal.style.display = 'none'; // Fecha o modal após o cadastro
+                $('#game-table').DataTable().ajax.reload();
+                $('#add-game-form')[0].reset();
+                addModal.style.display = 'none';
             },
             error: function(error) {
                 console.error('Erro ao cadastrar jogo:', error);
@@ -159,7 +155,7 @@ $(document).ready(function() {
         });
     });
 
-    // Função para deletar um jogo
+
     window.deleteGame = function(id) {
         if (confirm('Tem certeza que deseja excluir este jogo?')) {
             $.ajax({
@@ -167,7 +163,7 @@ $(document).ready(function() {
                 url: `${gameBaseUrl}/${id}`,
                 success: function(response) {
                     console.log('Jogo excluído com sucesso:', response);
-                    $('#game-table').DataTable().ajax.reload(); // Recarrega a tabela após a exclusão
+                    $('#game-table').DataTable().ajax.reload(); 
                 },
                 error: function(error) {
                     console.error('Erro ao excluir jogo:', error);
@@ -176,7 +172,7 @@ $(document).ready(function() {
         }
     };
 
-    // Abre o modal de cadastro de jogo
+
     $('#add-game-button').click(function() {
         addModal.style.display = 'block';
     });

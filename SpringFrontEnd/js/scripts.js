@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const highlightedGames = [
-        { title: "Game 1", imgSrc: "images/game1.jpg", description: "Descrição do Jogo 1" },
-        { title: "Game 2", imgSrc: "images/game2.jpg", description: "Descrição do Jogo 2" },
-        { title: "Game 3", imgSrc: "images/game3.jpg", description: "Descrição do Jogo 3" }
+    const promotions = [
+        { title: "7 days to Die", imgSrc: "images/promo.jpeg", description: "Descrição da Promoção 1" },
+        { title: "Sea of Thieves", imgSrc: "images/promo2.png", description: "Descrição da Promoção 2" },
+        { title: "RainbowSix Siege", imgSrc: "images/promo3.jpg", description: "Descrição da Promoção 3" },
+        { title: "Civilization IV", imgSrc: "images/promo4.jpg", description: "Descrição da Promoção 3" },
+        { title: "Valorant", imgSrc: "images/promo5.jpeg", description: "Descrição da Promoção 3" },
+        { title: "Barotrauma", imgSrc: "images/promo6.jpeg", description: "Descrição da Promoção 3" },
+        { title: "Cult of the Lamb", imgSrc: "images/promo7.jpg", description: "Descrição da Promoção 3" },
+        { title: "Assassin's Creed Black Flag", imgSrc: "images/promo8.jpeg", description: "Descrição da Promoção 3" },
     ];
 
-    const promotions = [
-        { title: "Promoção 1", imgSrc: "images/promo1.jpg", description: "Descrição da Promoção 1" },
-        { title: "Promoção 2", imgSrc: "images/promo2.jpg", description: "Descrição da Promoção 2" },
-        { title: "Promoção 3", imgSrc: "images/promo3.jpg", description: "Descrição da Promoção 3" }
+    const popularGames = [
+        { title: "Popular 1", imgSrc: "images/popular1.jpeg", description: "Descrição do Jogo Popular 1" },
+        { title: "Popular 2", imgSrc: "images/popular2.jpg", description: "Descrição do Jogo Popular 2" },
+        { title: "Popular 3", imgSrc: "images/popular3.jpg", description: "Descrição do Jogo Popular 3" }
     ];
 
     const topRatedGames = [
@@ -47,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    renderCards(highlightedGames, "highlighted-cards");
     renderCards(promotions, "promotions-cards");
+    renderCards(popularGames, "popular-cards");
     renderCards(topRatedGames, "top-rated-cards");
 });
